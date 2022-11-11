@@ -1,12 +1,8 @@
 # Myopia Clusters
 
-In this assignment, you’ll apply what you learned about unsupervised learning by fitting data to a model and using clustering algorithms to place data into groups. Then, you’ll create a visualization that shares your findings.
+Lets explore this unsupervised learning on a Myopia Dataset
 
-## Background
-
-You are on the data science team of a medical research company that’s interested in finding better ways to predict myopia, or nearsightedness. Your team has tried—and failed—to improve their classification model when training on the whole dataset. However, they believe that there might be distinct groups of patients that would be better to analyze separately. So, your supervisor has asked you to explore this possibility by using unsupervised learning.
-
-You have been provided with raw data, so you’ll first need to process it to fit the machine learning models. You will use several clustering algorithms to explore whether the patients can be placed into distinct groups. Then, you’ll create a visualization to share your findings with your team and other key stakeholders.
+First we need to process the raw data to fit the machine learning models. K-Mean clustering algorithms is used for exploration. 
 
 ## Instructions
 
@@ -26,43 +22,25 @@ This activity is broken down into four parts:
 
 2. Remove the "MYOPIC" column from the dataset.
 
-    * **Note:** The target column is needed for supervised machine learning, but it will make an unsupervised model biased. After all, the target column is effectively providing clusters already!
-
 3. Standardize your dataset so that columns that contain larger values do not influence the outcome more than columns with smaller values.
 
 ### Part 2: Apply Dimensionality Reduction
 
-1. Perform dimensionality reduction with PCA. How did the number of the features change?
-
-
-  * **Hint:** Rather than specify the number of principal components when you instantiate the PCA model, state the desired **explained variance**. For example, say that a dataset has 100 features. Using `PCA(n_components=0.99)` creates a model that will preserve approximately 99% of the explained variance, whether that means reducing the dataset to 80 principal components or 3. For this assignment, preserve 90% of the explained variance in dimensionality reduction.
+1. Perform dimensionality reduction with PCA. 
 
 2. Further reduce the dataset dimensions with t-SNE and visually inspect the results. To do this, run t-SNE on the principal components, which is the output of the PCA transformation.
+![t-SNE Cluster](images/t-SNE_cluster.PNG)
 
-3. Create a scatter plot of the t-SNE output. Are there distinct clusters?
 
 ### Part 3: Perform a Cluster Analysis with K-means
 
-Create an elbow plot to identify the best number of clusters. Make sure to do the following:
+Create an elbow plot to identify the best number of clusters. 
 
 * Use a `for` loop to determine the inertia for each `k` between 1 through 10.
-
-* If possible, determine where the elbow of the plot is, and at which value of `k` it appears.
+![Elbow Curve](images/ElbowCurve.PNG)
 
 ### Part 4: Make a Recommendation
 
-Based on your findings, write up a brief (one or two sentences) recommendation for your supervisor in your Jupyter Notebook. Can the patients be clustered? If so, into how many clusters?
-
-## Rubric
-
-[Unit 20 Homework Rubric](https://docs.google.com/document/d/1046PZMnFwxcNkyIewuJc_RYhaErY42HoNUKORkh18A4/edit)
-
-- - -
-
-## References
-
-Reduced dataset from [Orinda Longitudinal Study of Myopia conducted by the US National Eye Institute](https://clinicaltrials.gov/ct2/show/NCT00000169)
-
-- - -
-
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+* Looking at elbow cure we can say that there aren't any highly differentiated cluster. 
+* Same can be concluded from the scatter plot generated from the t-SNE features. We can also see that myopic and non-myopic data is blended togethere and are not forming any differentaible cluster.
+* Deep learning `Sequential` model would be a better choice for this problem. 
